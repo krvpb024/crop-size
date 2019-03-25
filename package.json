@@ -1,0 +1,34 @@
+{
+  "name": "crop-size",
+  "version": "1.0.0",
+  "description": "get the crop size on image",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"parcel frontend/**/*.html\" \"nodemon index\"",
+    "build": "parcel build frontend/**/*.html"
+  },
+  "author": "krvpb024",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/polyfill": "^7.4.0",
+    "concurrently": "^4.1.0",
+    "fastify": "^2.1.0",
+    "fastify-static": "^2.3.4",
+    "normalize.css": "^8.0.1",
+    "opn": "^5.5.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "autoprefixer": "^9.5.0",
+    "eslint": "^5.15.3",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "parcel": "^1.12.3",
+    "postcss-modules": "^1.4.1"
+  }
+}

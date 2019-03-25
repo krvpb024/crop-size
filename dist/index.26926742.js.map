@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":["console","log"],"mappings":";;;;;AAGA,aAHA,QAAA,iBACA,QAAA,eAEAA,QAAQC,IAAI","file":"index.26926742.js","sourceRoot":"../frontend/index","sourcesContent":["import 'normalize.css'\nimport './index.css'\n\nconsole.log('test')\n"]}
