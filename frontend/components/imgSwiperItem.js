@@ -14,7 +14,7 @@ const removeUploadedImageHandler = (host, e) => {
   store.dispatch(removeUploadedImage(host.image.index))
 }
 
-const ImgSwiperItem = {
+export const ImgSwiperItem = {
   image: {},
   render: ({ image }) => html`
     <div class="img-item" onclick="${updateCurrentImageHandler}">
