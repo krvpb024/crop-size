@@ -6,8 +6,6 @@ import '../components/imgInfo'
 import '../components/imgUploader'
 import '../components/imgSwiper'
 import fs from 'fs'
-
-// eslint-disable-next-line no-path-concat
 const style = fs.readFileSync(__dirname + '/index.css', 'utf8')
 
 export const IndexApp = {

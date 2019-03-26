@@ -1,0 +1,43 @@
+.img-item {
+  box-sizing: border-box;
+  min-width: 100px;
+  max-width: 100px;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.img-item--active {
+  border: 1px solid #000;
+}
+
+.img-item__image {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.img-item__close-button {
+  position: absolute;
+  border: none;
+  background-color: black;
+  top: 5%;
+  right: 5%;
+  padding: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: none;
+}
+
+.img-item__close-button:active {
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.img-item:hover .img-item__close-button {
+  display: block;
+}

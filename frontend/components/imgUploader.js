@@ -2,7 +2,6 @@ import { html, define } from 'hybrids'
 import { store } from '../store'
 import { uploadImages } from '../store/actions'
 import fs from 'fs'
-// eslint-disable-next-line no-path-concat
 const style = fs.readFileSync(__dirname + '/imgUploader.css', 'utf8')
 
 const dragoverHandler = (host, e) => {
@@ -38,7 +37,8 @@ const ImgUploader = {
   dragoverActive: false,
   render: ({ dragoverActive }) => html`
     <section class="img-uploader">
-      <div class="img-uploader__dropzone ${dragoverActive ? 'img-uploader__dropzone--active' : ''}"
+      <div
+        class="${{ 'img-uploader__dropzone': true, 'img-uploader__dropzone--active': dragoverActive }}"
         ondrop="${dropHandler}"
         ondragover="${dragoverHandler}"
         ondragleave="${dragleaveHandler}"

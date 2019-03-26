@@ -4,8 +4,8 @@
   display: grid;
   grid-template:
     "title        title       title" auto
-    "img-display  img-display img-info" 1fr
-    "img-uploader img-swiper  img-swiper" 120px / 120px minmax(0, 1fr) 150px;
+    "img-display  img-display img-info" minmax(0, 1fr)
+    "img-uploader img-swiper  img-swiper" 120px / 120px minmax(0, 1fr) 220px;
 }
 
 .app__title {
@@ -20,9 +20,11 @@
 .app__img-info {
   grid-area: img-info;
 }
+
 .app__img-uploader {
   grid-area: img-uploader;
 }
+
 .app__img-swiper {
   grid-area: img-swiper;
 }
