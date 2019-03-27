@@ -1,6 +1,7 @@
 import { html, define } from 'hybrids'
 import { store } from '../store'
 import { uploadImages } from '../store/actions'
+import uploadIcon from '../assets/icon/square-upload.svg'
 import fs from 'fs'
 const style = fs.readFileSync(__dirname + '/imgUploader.css', 'utf8')
 
@@ -52,7 +53,7 @@ const ImgUploader = {
         ondragleave="${dragleaveHandler}"
         for="file"
       >
-        <p>Files<br>Dropzone</p>
+        <img src="${uploadIcon}">
         <input
           class="dropzone__input"
           type="file"

@@ -23,6 +23,6 @@ p {
 }
 
 .img-uploader__dropzone--active {
-  background-color: black;
+  background-color: rgba(0, 0, 0, .1);
   color: white;
 }

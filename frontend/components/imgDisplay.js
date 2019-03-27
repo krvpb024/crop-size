@@ -10,8 +10,8 @@ export const imgDisplay = {
   currentImage: connect(store, state => state.currentImage),
   uploadImages: connect(store, (state) => state.uploadImages),
   showImageOrInstruction: ({ currentImage, uploadImages }) => {
-    if (uploadImages.length === 0) return html`<p>Please Upload Images</p>`
-    else if (!currentImage) return html`<p>Please Select an Image</p>`
+    if (uploadImages.length === 0) return html`<p>Please Upload Images Below</p>`
+    else if (!currentImage) return html`<p>Please Select an Image Below</p>`
     return html`
       <img
         src="${currentImage.src}"

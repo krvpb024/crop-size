@@ -12,14 +12,12 @@
   "license": "MIT",
   "dependencies": {
     "@babel/polyfill": "^7.4.0",
-    "bulma": "^0.7.4",
     "fastify": "^2.1.0",
     "fastify-static": "^2.3.4",
     "hybrids": "^2.0.2",
     "normalize.css": "^8.0.1",
     "opn": "^5.5.0",
-    "redux": "^4.0.1",
-    "swiper": "^4.5.0"
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
