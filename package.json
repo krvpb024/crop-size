@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently \"parcel frontend/**/*.html\" \"nodemon index\"",
     "dev-fe": "parcel frontend/**/*.html --open",
-    "build": "rm -rf dist && parcel build frontend/**/*.html"
+    "build": "rm -rf dist && parcel build frontend/**/*.html --public-url /crop-size/"
   },
   "author": "krvpb024",
   "license": "MIT",
