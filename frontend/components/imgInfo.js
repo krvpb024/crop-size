@@ -15,11 +15,11 @@ export const ImgInfo = {
   render: ({ cropSize, imageSize }) => html`
     <section>
       <h2>Image Info</h2>
-      ${imageSize ? html`
+      ${imageSize && html`
         <h3>Image Size</h3>
         <p>width: ${imageSize.naturalWidth}</p>
         <p>height: ${imageSize.naturalHeight}</p>
-      ` : html``}
+      `}
       ${cropSize && html`
         <h3>Crop Size</h3>
         <p>width: ${cropSize.width}</p>

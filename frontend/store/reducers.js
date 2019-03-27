@@ -22,11 +22,9 @@ export const imageReducer = (state = initialState, action) => {
         ...action.uploadImages.map(img => ({ src: img })),
         ...state.uploadImages
       ].map(reorderIndex)
-      const currentImage = state.currentImage ? state.currentImage : uploadImages[0]
       return {
         ...state,
-        uploadImages,
-        currentImage
+        uploadImages
       }
     }
     case UPDATE_CURRENT_IMAGE:

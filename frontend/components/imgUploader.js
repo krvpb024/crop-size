@@ -1,8 +1,9 @@
 import { html, define } from 'hybrids'
 import { store } from '../store'
-import { uploadImages } from '../store/actions'
+import { uploadImages, updateCurrentImage } from '../store/actions'
 import uploadIcon from '../assets/icon/square-upload.svg'
 import fs from 'fs'
+import { connect } from '../utils/factories'
 const style = fs.readFileSync(__dirname + '/imgUploader.css', 'utf8')
 
 const dragoverHandler = (host, e) => {
@@ -33,6 +34,7 @@ const dropHandler = async (host, ev) => {
 
   const result = await Promise.all(files.map(transferFileToDataUrl))
   store.dispatch(uploadImages(result))
+  store.dispatch(updateCurrentImage(host.uploadImages[0]))
 }
 
 const onchangeHander = async (host, e) => {
@@ -40,10 +42,12 @@ const onchangeHander = async (host, e) => {
 
   const result = await Promise.all(files.map(transferFileToDataUrl))
   store.dispatch(uploadImages(result))
+  store.dispatch(updateCurrentImage(host.uploadImages[0]))
 }
 
 const ImgUploader = {
   dragoverActive: false,
+  uploadImages: connect(store, state => state.uploadImages),
   render: ({ dragoverActive }) => html`
     <section class="img-uploader">
       <label
