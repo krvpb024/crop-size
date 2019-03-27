@@ -17,21 +17,25 @@ const initialState = {
 
 export const imageReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPLOAD_IMAGES:
+    case UPLOAD_IMAGES: {
+      const uploadImages = [
+        ...action.uploadImages.map(img => ({ src: img })),
+        ...state.uploadImages
+      ].map(reorderIndex)
+      const currentImage = state.currentImage ? state.currentImage : uploadImages[0]
       return {
         ...state,
-        uploadImages: [
-          ...action.uploadImages.map(img => ({ src: img })),
-          ...state.uploadImages
-        ].map(reorderIndex)
+        uploadImages,
+        currentImage
       }
+    }
     case UPDATE_CURRENT_IMAGE:
       return {
         ...state,
         boundingBox: null,
         currentImage: action.currentImage
       }
-    case REMOVE_UPLOADED_IMAGE:
+    case REMOVE_UPLOADED_IMAGE: {
       const uploadImages = state.uploadImages
         .filter((item, index) => index !== action.imageIndex)
         .map(reorderIndex)
@@ -52,6 +56,7 @@ export const imageReducer = (state = initialState, action) => {
         imageSize: null,
         currentImage: clearCurrentImageOrNot(state)
       }
+    }
     case UPDATE_CURRENT_IMAGE_SIZE:
       return {
         ...state,
