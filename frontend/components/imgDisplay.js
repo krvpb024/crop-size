@@ -41,11 +41,11 @@ export const imgDisplay = {
       }
     }
   },
-  render: ({ showImageOrInstruction, displayImage }) => html`
+  render: ({ showImageOrInstruction, displayImage, currentImage }) => html`
     <section class="img-display">
       <div class="img-display__inner-container">
         ${showImageOrInstruction}
-        ${displayImage ? html`
+        ${currentImage && displayImage ? html`
           <img-canvas displayImage="${displayImage}"></img-canvas>
         ` : ''}
       </div>
