@@ -13,6 +13,10 @@
   border-radius: 10px;
 }
 
+.img-uploader__dropzone:hover {
+  background-color: rgba(0, 0, 0, .1);
+}
+
 p {
   margin: 0;
   text-align: center;

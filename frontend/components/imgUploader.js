@@ -11,6 +11,17 @@ const dragoverHandler = (host, e) => {
 const dragleaveHandler = (host, e) => {
   host.dragoverActive = false
 }
+
+const transferFileToDataUrl = (file) => {
+  return new Promise((resolve) => {
+    const reader = new FileReader()
+    reader.addEventListener('load', (e) => {
+      resolve(e.target.result)
+    })
+    reader.readAsDataURL(file)
+  })
+}
+
 const dropHandler = async (host, ev) => {
   ev.preventDefault()
   if (!ev.dataTransfer.files) return
@@ -19,15 +30,12 @@ const dropHandler = async (host, ev) => {
   const isImageType = file => file.type.startsWith('image/')
   const files = Array.from(ev.dataTransfer.files).filter(isImageType)
 
-  const transferFileToDataUrl = (file) => {
-    return new Promise((resolve) => {
-      const reader = new FileReader()
-      reader.addEventListener('load', (e) => {
-        resolve(e.target.result)
-      })
-      reader.readAsDataURL(file)
-    })
-  }
+  const result = await Promise.all(files.map(transferFileToDataUrl))
+  store.dispatch(uploadImages(result))
+}
+
+const onchangeHander = async (host, e) => {
+  const files = Array.from(host.shadowRoot.querySelector('.dropzone__input').files)
 
   const result = await Promise.all(files.map(transferFileToDataUrl))
   store.dispatch(uploadImages(result))
@@ -37,14 +45,24 @@ const ImgUploader = {
   dragoverActive: false,
   render: ({ dragoverActive }) => html`
     <section class="img-uploader">
-      <div
+      <label
         class="${{ 'img-uploader__dropzone': true, 'img-uploader__dropzone--active': dragoverActive }}"
         ondrop="${dropHandler}"
         ondragover="${dragoverHandler}"
         ondragleave="${dragleaveHandler}"
+        for="file"
       >
         <p>Files<br>Dropzone</p>
-      </div>
+        <input
+          class="dropzone__input"
+          type="file"
+          id="file"
+          name="file"
+          accept="image/*"
+          hidden
+          multiple
+          onchange=${onchangeHander}>
+      </label>
     </section>
   `.style(style)
 }
