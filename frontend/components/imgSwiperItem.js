@@ -1,11 +1,13 @@
 import { html, define } from 'hybrids'
-import fs from 'fs'
+import { connect } from '../utils/factories'
 import closeIcon from '../assets/icon/ic_close_18px.svg'
 import { store } from '../store'
 import { updateCurrentImage, removeUploadedImage } from '../store/actions'
+import fs from 'fs'
 const style = fs.readFileSync(__dirname + '/imgSwiperItem.css', 'utf8')
 
 const updateCurrentImageHandler = (host) => {
+  if (host.image === host.currentImage) return
   store.dispatch(updateCurrentImage(host.image))
 }
 
@@ -15,7 +17,11 @@ const removeUploadedImageHandler = (host, e) => {
 }
 
 export const ImgSwiperItem = {
+  // props
   image: {},
+  // data
+  currentImage: connect(store, state => state.currentImage),
+  // render
   render: ({ image }) => html`
     <div class="img-item" onclick="${updateCurrentImageHandler}">
       <img src="${image.src}" class="img-item__image">

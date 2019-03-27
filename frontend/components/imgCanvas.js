@@ -36,7 +36,7 @@ const getPercentage = (a, b) => a / b
 const ImgCanvas = {
   // props
   displayImage: {
-    set: (host, value) => {
+    set: (host, value, lastValue) => {
       host.cropping = 'stop'
       return value
     }
