@@ -53,7 +53,7 @@ export const imageReducer = (state = initialState, action) => {
       return {
         ...state,
         uploadImages,
-        imageSize: state.currentImage.index === action.imageIndex ? null : state.imageSize,
+        imageSize: state.currentImage && state.currentImage.index === action.imageIndex ? null : state.imageSize,
         currentImage: clearCurrentImageOrNot(state)
       }
     }
