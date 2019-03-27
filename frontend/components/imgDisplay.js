@@ -2,6 +2,7 @@ import { html, define, dispatch } from 'hybrids'
 import { connect } from '../utils/factories'
 import { store } from '../store'
 import './imgCanvas'
+import { updateCurrentImageSize } from '../store/actions'
 import fs from 'fs'
 const style = fs.readFileSync(__dirname + '/imgDisplay.css', 'utf8')
 
@@ -30,6 +31,7 @@ export const imgDisplay = {
             naturalWidth: imgElement.naturalWidth,
             naturalHeight: imgElement.naturalHeight
           }
+          store.dispatch(updateCurrentImageSize(host[key]))
         } else {
           host[key] = null
         }

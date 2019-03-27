@@ -1,10 +1,18 @@
-import { UPLOAD_IMAGES, UPDATE_CURRENT_IMAGE, REMOVE_UPLOADED_IMAGE } from './types'
+import {
+  UPLOAD_IMAGES,
+  UPDATE_CURRENT_IMAGE,
+  REMOVE_UPLOADED_IMAGE,
+  UPDATE_CURRENT_IMAGE_SIZE,
+  UPDATE_BOUNDING_BOX
+} from './types'
 
 const reorderIndex = (img, index) => ({ ...img, index })
 
 const initialState = {
   uploadImages: [],
-  currentImage: null
+  currentImage: null,
+  imageSize: null,
+  boundingBox: null
 }
 
 export const imageReducer = (state = initialState, action) => {
@@ -20,6 +28,7 @@ export const imageReducer = (state = initialState, action) => {
     case UPDATE_CURRENT_IMAGE:
       return {
         ...state,
+        boundingBox: null,
         currentImage: action.currentImage
       }
     case REMOVE_UPLOADED_IMAGE:
@@ -40,7 +49,18 @@ export const imageReducer = (state = initialState, action) => {
       return {
         ...state,
         uploadImages,
+        imageSize: null,
         currentImage: clearCurrentImageOrNot(state)
+      }
+    case UPDATE_CURRENT_IMAGE_SIZE:
+      return {
+        ...state,
+        imageSize: action.imageSize
+      }
+    case UPDATE_BOUNDING_BOX:
+      return {
+        ...state,
+        boundingBox: action.boundingBox
       }
     default:
       return state

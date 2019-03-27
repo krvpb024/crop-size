@@ -5,7 +5,7 @@
   grid-template:
     "title        title       title" auto
     "img-display  img-display img-info" minmax(0, 1fr)
-    "img-uploader img-swiper  img-swiper" 120px / 120px minmax(0, 1fr) 220px;
+    "img-uploader img-swiper  img-swiper" 120px / 120px minmax(0, 1fr) minmax(0, 220px);
 }
 
 .app__title {

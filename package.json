@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"parcel frontend/**/*.html\" \"nodemon index\"",
-    "dev-fe": "parcel frontend/**/*.html",
+    "dev-fe": "parcel frontend/**/*.html --open",
     "build": "rm -rf dist && parcel build frontend/**/*.html"
   },
   "author": "krvpb024",
